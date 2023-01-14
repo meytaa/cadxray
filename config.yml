@@ -1,0 +1,39 @@
+---
+ model: densenet121
+ training: 
+   output_ch: 2 
+   num_epochs: 160
+   batch_size: 32 
+   num_workers: 2
+   lr: 5e-6 
+   tr_strategy: off 
+   init_weights: scratch 
+   loss_fcn: bce 
+   mode: train
+ log:
+   model_path: /models
+   result_path: /results
+   layer_path: /layers
+ data:
+   machine: local
+   dataset: pc
+   image_size: 224
+   aug_prob: 1.0 
+   local:
+     tb:
+       data_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/TB_Chest_Radiography_Database
+     cxr14:
+       data_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/ChestXray14/images
+       csv_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/ChestXray14/new_split_xray14_
+     pc: 
+       data_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/Padchest/PC/images-224
+       csv_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/Padchest/PC/split_PC_
+   cc:
+     tb: 
+       data_path: /home/meyta/scratch/Datasets/TB_Chest_Radiography_Database
+     cxr14:
+       data_path: /home/meyta/scratch/Datasets/ChestXray14/images
+       csv_path: /home/meyta/scratch/Datasets/ChestXray14/new_split_xray14
+     pc:
+       data_path: /home/meyta/scratch/Datasets/PC/images-224
+       csv_path: /home/meyta/scratch/Datasets/PC/split_PC
