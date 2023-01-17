@@ -1,19 +1,22 @@
 ---
- model: densenet121
+ model:
+   model_name: densenet121
+   init_weights: scratch 
+   output_ch: 2
  training: 
-   output_ch: 2 
    num_epochs: 160
    batch_size: 32 
    num_workers: 2
    lr: 5e-6 
+   lr_decay: 1e-7
    tr_strategy: off 
-   init_weights: scratch 
    loss_fcn: bce 
    mode: train
+   generalization: base
  log:
-   model_path: /models
-   result_path: /results
-   layer_path: /layers
+   model_path: models
+   result_path: results
+   layer_path: layers
  data:
    machine: local
    dataset: pc
