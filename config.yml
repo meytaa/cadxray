@@ -1,7 +1,7 @@
 ---
  model:
    model_name: densenet121
-   init_weights: scratch 
+   init_weights: normal 
    output_ch: 2
  training: 
    num_epochs: 160
@@ -13,6 +13,8 @@
    loss_fcn: bce 
    mode: train
    generalization: base
+   load_pretrained: True
+   load_model_id: 230116-289957
  log:
    model_path: models
    result_path: results

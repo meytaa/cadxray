@@ -22,8 +22,8 @@ class compile_nets(object):
         self.init_w = config['model']['init_weights']
         self.loss_fcn = config['training']['loss_fcn']
         self.set_criterion()
-        self.lr = config['training']['lr']
-        self.lr_decay = config['training']['lr_decay']
+        self.lr = float(config['training']['lr'])
+        self.lr_decay = float(config['training']['lr_decay'])
 
         
         # Data assembler
@@ -84,7 +84,15 @@ class compile_nets(object):
         self.averager_1 = nn.AvgPool2d((7,7))
 
         # Building the model
-        self.model = build_model(config['model'])
+        model_creator = build_model(config['model'])
+        if config['training']['load_model_id'] and config['model']['init_weights']=='pretrained':
+            try:
+                pretrained_model_name = model_creator.load_pretrain(model_id = config['training']['load_model_id'])
+                print('Pretraied model loaded\nModel ID: {}\nModel path: {}'.format(config['training']['load_model_id'], pretrained_model_name))
+            except:
+                print('Pretrained model with ID={} does not exist or not matched to the model!.'.format(config['training']['load_model_id']))
+        self.model = model_creator.model
+        model_creator.display()
         self.set_optimizer()
         print('so far done!')
 
@@ -94,7 +102,90 @@ class compile_nets(object):
     def set_criterion(self):
         if self.loss_fcn=='bce':
             self.criterion_class = nn.BCELoss()
+        print('Loss function is set to {}.'.format(self.criterion_class))
 
     def set_optimizer(self):
         self.optimizer = optim.Adam(self.model.parameters(), self.lr)
 
+
+
+    def train(self):
+        writer = SummaryWriter(os.path.join('runs','runs_'+self.model_type,self.store_name))
+        
+
+        best_val_loss = 500
+        train_epoch_losses = []
+        valid_epoch_losses = []
+        train_itr = int(len(self.train_loader.dataset)/self.batch_size)
+        valid_itr = int(len(self.valid_loader.dataset)/self.batch_size)
+        tr_itr_c= 0
+        val_itr_c= 0
+        middle_layer_num = int(0.5*len(self.model.module.features)) if torch.cuda.device_count() > 1 else int(0.5*len(self.model.features))
+        l_names = ['early', 'middle', 'late']
+        l_nums = [2, middle_layer_num, -1]
+        for epoch in range(self.num_epochs):
+            self.model.train()
+            d_label = []
+            d_pred = []
+            epoch_loss = 0
+            early_layer = []
+            middle_layer = []
+            late_layer = []
+            print('Training')
+            start_time = time.time()
+            for i, (image, label) in enumerate (self.train_loader):
+                label = torch.nn.functional.one_hot(label, num_classes=2)
+                image = image.to(self.device)
+                label = label.float().to(self.device)
+                pred = self.model(image)
+                early_layer = self.model.module.features[:2](image).detach().cpu().numpy().astype('float16')\
+                     if torch.cuda.device_count() > 1 else self.model.features[:2](image).detach().cpu().numpy().astype('float16')
+                # torch.save(early_layer, os.path.join(self.layer_dir, 'EP_{epoch}-itr_{i}-L_2.pt'.format(epoch=epoch, i=i)))
+                np.save(os.path.join(self.layer_dir, 'EP_{epoch}-itr_{i}-L_2'.format(epoch=epoch, i=i)), early_layer)
+                middle_layer = self.model.module.features[:-middle_layer_num](image).detach().cpu().numpy().astype('float16') \
+                     if torch.cuda.device_count() > 1 else self.model.features[:-middle_layer_num](image).detach().cpu().numpy().astype('float16')
+                # torch.save(middle_layer, os.path.join(self.layer_dir, 'EP_{epoch}-itr_{i}-L_{middle_layer_num}.pt'.format(epoch=epoch, i=i, middle_layer_num=middle_layer_num)))
+                np.save(os.path.join(self.layer_dir, 'EP_{epoch}-itr_{i}-L_{middle_layer_num}.npy'.format(epoch=epoch, i=i, middle_layer_num=middle_layer_num)), middle_layer)
+                late_layer = self.model.module.features(image).detach().cpu().numpy().astype('float16')\
+                     if torch.cuda.device_count() > 1 else self.model.features(image).detach().cpu().numpy().astype('float16')
+                np.save(os.path.join(self.layer_dir, 'EP_{epoch}-itr_{i}-L_-1.npy'.format(epoch=epoch, i=i)), late_layer)
+
+                pred = torch.sigmoid(pred)
+                loss = self.criterion_class(pred,label)
+                d_label.append(label.detach().cpu().numpy())
+                d_pred.append(pred.detach().cpu().numpy())
+                self.model.zero_grad()
+                loss.backward()
+                self.optimizer.step()
+                epoch_loss += loss.item()*image.size(0)
+                end_time = time.time()
+                print('Epoch [ %4d/%d ] - Iteration [ %5d / %d ] --> Loss = %.4f - iteration time:%.4f '%(epoch+1, self.num_epochs, i,train_itr,loss.item(), end_time-start_time))
+                start_time = end_time
+                tr_itr_c +=1
+                writer.add_scalar('Iteration Loss/Train', loss.item(), tr_itr_c)
+
+            # itr_files = os.listdir(self.layer_dir)
+            # for layer_num in l_nums:
+            #     r = re.compile(".*L_{}.*".format(layer_num))
+            #     associate_list = list(filter(r.match, itr_files))
+                # list_of_tensors = [torch.load(os.path.join(self.layer_dir,file)) for file in associate_list]
+                # associate_tensor = torch.concat(list_of_tensors, 0)
+                # del list_of_tensors
+                # torch.save(associate_tensor, os.path.join(self.epoch_layer_dir, "EP_{}-L_{}.pt".format(epoch, layer_num)))
+   
+
+
+            epoch_loss /=len(self.train_loader.dataset)
+            d_pred = np.concatenate(d_pred)
+            d_label = np.concatenate(d_label)
+            train_epoch_losses.append(epoch_loss)
+            auroc_train = get_AUROC(d_label,d_pred)
+            for i in range(len(auroc_train)):
+                writer.add_scalar('AUCROC '+ self.train_ds.pathologies[i]+ '/Train', auroc_train[i], epoch)
+            writer.add_scalar('Loss/Epoch(Train)', epoch_loss, epoch)
+            
+            self.model.eval()
+            d_val_label = []
+            d_val_pred = []
+            epoch_val_loss = 0
+            print('Validation')

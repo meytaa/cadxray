@@ -17,6 +17,8 @@ class build_model(object):
         
     def create_model(self):
         self.model = eval('{}(pretrained={})'.format(self.model_name, self.init_weights=='imagenet'))
+        if self.init_weights=='imagenet':
+            print('Weights trained on {} is loaded!'.format(self.init_weights))
 
     def initiate_model(self, gain=0.02):
         if not (self.init_weights=='pretrained' or self.init_weights=='imagenet'):
@@ -38,11 +40,11 @@ class build_model(object):
                 elif classname.find('BatchNorm2d') != -1:
                     init.normal_(m.weight.data, 1.0, gain)
                     init.constant_(m.bias.data, 0.0)
-            print('initialize network with %s' % self.init_weights)
             self.model.apply(init_func)
+            print("Model's weights are Initialized using {} method.".format(self.init_weights))
 
 
-    def get_modelname(self, model_id = '230116-289957'):
+    def get_modelname(self, model_id):
         model_list = os.listdir('models/')
         r = re.compile("^.+{}.pkl$".format(model_id))#author.handle:.*/*.csv")# Working with one type of table with the same format
         model_name = list(filter(r.match, model_list))[0]
@@ -60,8 +62,30 @@ class build_model(object):
         elif self.model_name =='mobilenet_v3_large':
             self.model.classifier[-1] = nn.Linear(1280, self.output_size)
 
+    def load_pretrain(self, model_id):
         if self.init_weights=='pretrained':
-            self.model.load_state_dict(torch.load(self.get_modelname(model_id = '230116-289957')))
+            model_name = self.get_modelname(model_id)
+            self.model.load_state_dict(torch.load(model_name))
+        return model_name
+
+    def display(self):
+        """Print out the network information."""
+        num_trainable_params = 0
+        num_params = 0
+        for p in self.model.parameters():
+            if p.requires_grad==True:
+                num_params += p.numel()
+                num_trainable_params += p.numel()
+            if p.requires_grad==False:
+                num_params += p.numel()
+                pass
+        name = self.model.__class__.__name__
+        model_type = self.model_name
+        print('\nModel Name:{}({})'.format(name, model_type))
+        print("Training parameters: {}\nAll parameters:      {}".format(num_trainable_params, num_params))
+
+
+
 if __name__ == '__main__':
 
     config={}
