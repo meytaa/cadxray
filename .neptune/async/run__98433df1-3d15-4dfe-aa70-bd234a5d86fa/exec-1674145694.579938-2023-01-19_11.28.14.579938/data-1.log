@@ -1,0 +1,207 @@
+{"obj": {"type": "AssignString", "path": ["sys", "name"], "value": "Untitled"}, "version": 1}
+{"obj": {"type": "AssignString", "path": ["sys", "description"], "value": ""}, "version": 2}
+{"obj": {"type": "AssignString", "path": ["sys", "hostname"], "value": "mohammad-All-Series"}, "version": 3}
+{"obj": {"type": "AssignBool", "path": ["sys", "failed"], "value": false}, "version": 4}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stdout"]}, "version": 5}
+{"obj": {"type": "ClearStringLog", "path": ["monitoring", "stderr"]}, "version": 6}
+{"obj": {"type": "AssignString", "path": ["source_code", "entrypoint"], "value": "main.py"}, "version": 7}
+{"obj": {"type": "UploadFileSet", "path": ["source_code", "files"], "file_globs": ["/media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/2023/Generalization/cadxray/main.py"], "reset": "False"}, "version": 8}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "cpu"], "min": 0.0, "max": 100.0, "unit": "%"}, "version": 9}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "cpu"]}, "version": 10}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "memory"], "min": 0.0, "max": 15.533466339111328, "unit": "GB"}, "version": 11}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "memory"]}, "version": 12}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "gpu"], "min": 0.0, "max": 100.0, "unit": "%"}, "version": 13}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "gpu"]}, "version": 14}
+{"obj": {"type": "ConfigFloatSeries", "path": ["monitoring", "gpu_memory"], "min": 0.0, "max": 7.7939453125, "unit": "GB"}, "version": 15}
+{"obj": {"type": "ClearFloatLog", "path": ["monitoring", "gpu_memory"]}, "version": 16}
+{"obj": {"type": "AssignString", "path": ["config", "model"], "value": "DenseNet"}, "version": 17}
+{"obj": {"type": "AssignString", "path": ["config", "criterion"], "value": "BCELoss"}, "version": 18}
+{"obj": {"type": "AssignString", "path": ["config", "optimizer"], "value": "Adam"}, "version": 19}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 13.6, "step": null, "ts": 1674145695.1824567}]}, "version": 20}
+{"obj": {"type": "AssignString", "path": ["config", "initial weights"], "value": "normal"}, "version": 21}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 8.370613098144531, "step": null, "ts": 1674145695.1824567}]}, "version": 22}
+{"obj": {"type": "AssignInt", "path": ["config", "num epochs"], "value": 2}, "version": 23}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "gpu"], "values": [{"value": 5.0, "step": null, "ts": 1674145695.1824567}]}, "version": 24}
+{"obj": {"type": "AssignInt", "path": ["config", "batch size"], "value": 16}, "version": 25}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "gpu_memory"], "values": [{"value": 1.46746826171875, "step": null, "ts": 1674145695.1824567}]}, "version": 26}
+{"obj": {"type": "AssignFloat", "path": ["config", "lr"], "value": 5e-06}, "version": 27}
+{"obj": {"type": "AssignFloat", "path": ["config", "lr decay"], "value": 1e-07}, "version": 28}
+{"obj": {"type": "AssignBool", "path": ["config", "train strategy"], "value": false}, "version": 29}
+{"obj": {"type": "AssignString", "path": ["config", "generalization"], "value": "base"}, "version": 30}
+{"obj": {"type": "AssignString", "path": ["config", "machine"], "value": "local"}, "version": 31}
+{"obj": {"type": "AssignString", "path": ["config", "train dataset"], "value": "pc"}, "version": 32}
+{"obj": {"type": "AssignString", "path": ["config", "test dataset"], "value": "pc"}, "version": 33}
+{"obj": {"type": "AssignString", "path": ["config", "store name"], "value": "mdl=densenet121-dataset=(pc-pc)-imsize=224-wt=normal-lfn=bce-gn=base-lr=(5e-06,1e-07)-ep=2-bs=16-aug=1.0-id=230119-841831"}, "version": 34}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Training", "step": null, "ts": 1674145695.2135873}]}, "version": 35}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145695.214213}]}, "version": 36}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     1 / 5 ] --> Loss = 0.7080 - iteration time:0.7915 ", "step": null, "ts": 1674145696.004984}]}, "version": 37}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145696.0057695}]}, "version": 38}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     2 / 5 ] --> Loss = 0.7093 - iteration time:0.0568 ", "step": null, "ts": 1674145696.0617013}]}, "version": 39}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145696.0627317}]}, "version": 40}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     3 / 5 ] --> Loss = 0.7027 - iteration time:0.0519 ", "step": null, "ts": 1674145696.1135952}]}, "version": 41}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145696.1144817}]}, "version": 42}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     4 / 5 ] --> Loss = 0.7096 - iteration time:0.0534 ", "step": null, "ts": 1674145696.1695788}]}, "version": 43}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145696.170444}]}, "version": 44}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     5 / 5 ] --> Loss = 0.7093 - iteration time:0.0353 ", "step": null, "ts": 1674145696.2022843}]}, "version": 45}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145696.2030892}]}, "version": 46}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - mean"], "values": [{"value": 0.5180374130261082, "step": null, "ts": 1674145696.8190856}]}, "version": 47}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Consolidation"], "values": [{"value": 0.25757575757575757, "step": null, "ts": 1674145696.819572}]}, "version": 48}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Hernia"], "values": [{"value": 0.8636363636363636, "step": null, "ts": 1674145696.819893}]}, "version": 49}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Atelectasis"], "values": [{"value": 0.6136363636363636, "step": null, "ts": 1674145696.8202066}]}, "version": 50}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Cardiomegaly"], "values": [{"value": 0.6065573770491803, "step": null, "ts": 1674145696.8205223}]}, "version": 51}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Edema"], "values": [{"value": 0.11940298507462688, "step": null, "ts": 1674145696.8208296}]}, "version": 52}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Emphysema"], "values": [{"value": 0.8484848484848484, "step": null, "ts": 1674145696.8210995}]}, "version": 53}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Fibrosis"], "values": [{"value": 0.40909090909090906, "step": null, "ts": 1674145696.8213625}]}, "version": 54}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Fracture"], "values": [{"value": 0.6358974358974359, "step": null, "ts": 1674145696.8216608}]}, "version": 55}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Infiltration"], "values": [{"value": 0.54296875, "step": null, "ts": 1674145696.8219633}]}, "version": 56}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Mass"], "values": [{"value": 0.7954545454545455, "step": null, "ts": 1674145696.8222437}]}, "version": 57}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Nodule"], "values": [{"value": 0.515625, "step": null, "ts": 1674145696.8224986}]}, "version": 58}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - No Finding"], "values": [{"value": 0.41545893719806765, "step": null, "ts": 1674145696.8227901}]}, "version": 59}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Effusion"], "values": [{"value": 0.40625, "step": null, "ts": 1674145696.823155}]}, "version": 60}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Pleural_Thickening"], "values": [{"value": 0.5333333333333333, "step": null, "ts": 1674145696.8234565}]}, "version": 61}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Pneumonia"], "values": [{"value": 0.3709677419354839, "step": null, "ts": 1674145696.8237746}]}, "version": 62}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Pneumothorax"], "values": [{"value": 0.44921875, "step": null, "ts": 1674145696.824086}]}, "version": 63}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - other"], "values": [{"value": 0.4230769230769231, "step": null, "ts": 1674145696.82446}]}, "version": 64}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "loss"], "values": [{"value": 0.7075189211789299, "step": null, "ts": 1674145696.8249843}]}, "version": 65}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Validation", "step": null, "ts": 1674145696.8299649}]}, "version": 66}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145696.8316505}]}, "version": 67}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     1/4 ] --> Validation loss = 0.6915", "step": null, "ts": 1674145697.4077475}]}, "version": 68}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145697.4085147}]}, "version": 69}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     2/4 ] --> Validation loss = 0.6918", "step": null, "ts": 1674145697.5182862}]}, "version": 70}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145697.5201776}]}, "version": 71}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     3/4 ] --> Validation loss = 0.6911", "step": null, "ts": 1674145697.5573432}]}, "version": 72}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145697.557912}]}, "version": 73}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    1/2 ] - Iteration [     4/4 ] --> Validation loss = 0.6909", "step": null, "ts": 1674145697.581238}]}, "version": 74}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145697.5823486}]}, "version": 75}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - mean"], "values": [{"value": 0.4933487822633199, "step": null, "ts": 1674145698.4144254}]}, "version": 76}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Consolidation"], "values": [{"value": 0.7358490566037736, "step": null, "ts": 1674145698.4149911}]}, "version": 77}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Hernia"], "values": [{"value": 0.679245283018868, "step": null, "ts": 1674145698.4153438}]}, "version": 78}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Atelectasis"], "values": [{"value": 0.30188679245283023, "step": null, "ts": 1674145698.4156423}]}, "version": 79}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Cardiomegaly"], "values": [{"value": 0.3025, "step": null, "ts": 1674145698.4159927}]}, "version": 80}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Edema"], "values": [{"value": 0.37735849056603776, "step": null, "ts": 1674145698.4163523}]}, "version": 81}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Emphysema"], "values": [{"value": 0.4673202614379085, "step": null, "ts": 1674145698.4168289}]}, "version": 82}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Fibrosis"], "values": [{"value": 0.7115384615384616, "step": null, "ts": 1674145698.4173555}]}, "version": 83}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Fracture"], "values": [{"value": 0.45098039215686275, "step": null, "ts": 1674145698.417819}]}, "version": 84}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Infiltration"], "values": [{"value": 0.5225694444444444, "step": null, "ts": 1674145698.4182646}]}, "version": 85}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Mass"], "values": [{"value": 0.5816993464052287, "step": null, "ts": 1674145698.418697}]}, "version": 86}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Nodule"], "values": [{"value": 0.4444444444444444, "step": null, "ts": 1674145698.4192026}]}, "version": 87}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - No Finding"], "values": [{"value": 0.6341991341991342, "step": null, "ts": 1674145698.4195745}]}, "version": 88}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Effusion"], "values": [{"value": 0.18954248366013074, "step": null, "ts": 1674145698.4198842}]}, "version": 89}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Pleural_Thickening"], "values": [{"value": 0.4716981132075472, "step": null, "ts": 1674145698.420204}]}, "version": 90}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Pneumonia"], "values": [{"value": 0.3267973856209151, "step": null, "ts": 1674145698.4205232}]}, "version": 91}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Pneumothorax"], "values": [{"value": 0.6204081632653061, "step": null, "ts": 1674145698.420841}]}, "version": 92}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - other"], "values": [{"value": 0.5688920454545454, "step": null, "ts": 1674145698.4211557}]}, "version": 93}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "loss"], "values": [{"value": 0.6914012961917453, "step": null, "ts": 1674145698.4214537}]}, "version": 94}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch:    1/2 --> Train Loss: 0.7093  Validation Loss: 0.6909", "step": null, "ts": 1674145698.426994}]}, "version": 95}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145698.4428127}]}, "version": 96}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Best densenet121 model score is reached now: 0.6914", "step": null, "ts": 1674145698.4461746}]}, "version": 97}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145698.4663198}]}, "version": 98}
+{"obj": {"type": "UploadFile", "path": ["model", "mdl=densenet121-dataset=(pc-pc)-imsize=224-wt=normal-lfn=bce-gn=base-lr=(5e-06,1e-07)-ep=2-bs=16-aug=1.0-id=230119-841831.pt"], "ext": "pt", "file_path": "/media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/2023/Generalization/cadxray/models/mdl=densenet121-dataset=(pc-pc)-imsize=224-wt=normal-lfn=bce-gn=base-lr=(5e-06,1e-07)-ep=2-bs=16-aug=1.0-id=230119-841831.pt", "clean_after_upload": false}, "version": 99}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Validation Loss"], "value": 0.6914012961917453}, "version": 100}
+{"obj": {"type": "AssignInt", "path": ["validation results", "Stopping Epoch"], "value": 0}, "version": 101}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Consolidation"], "value": 0.7358490566037736}, "version": 102}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Hernia"], "value": 0.679245283018868}, "version": 103}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Atelectasis"], "value": 0.30188679245283023}, "version": 104}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Cardiomegaly"], "value": 0.3025}, "version": 105}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Edema"], "value": 0.37735849056603776}, "version": 106}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Emphysema"], "value": 0.4673202614379085}, "version": 107}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Fibrosis"], "value": 0.7115384615384616}, "version": 108}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Fracture"], "value": 0.45098039215686275}, "version": 109}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Infiltration"], "value": 0.5225694444444444}, "version": 110}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Mass"], "value": 0.5816993464052287}, "version": 111}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Nodule"], "value": 0.4444444444444444}, "version": 112}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "No Finding"], "value": 0.6341991341991342}, "version": 113}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Effusion"], "value": 0.18954248366013074}, "version": 114}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Pleural_Thickening"], "value": 0.4716981132075472}, "version": 115}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Pneumonia"], "value": 0.3267973856209151}, "version": 116}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Pneumothorax"], "value": 0.6204081632653061}, "version": 117}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "other"], "value": 0.5688920454545454}, "version": 118}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Training", "step": null, "ts": 1674145704.55305}]}, "version": 119}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145704.5784798}]}, "version": 120}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     1 / 5 ] --> Loss = 0.7055 - iteration time:0.5897 ", "step": null, "ts": 1674145705.1435308}]}, "version": 121}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145705.1444383}]}, "version": 122}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "cpu"], "values": [{"value": 17.2, "step": null, "ts": 1674145705.206379}]}, "version": 123}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "memory"], "values": [{"value": 8.692798614501953, "step": null, "ts": 1674145705.206379}]}, "version": 124}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     2 / 5 ] --> Loss = 0.6993 - iteration time:0.0654 ", "step": null, "ts": 1674145705.2091873}]}, "version": 125}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "gpu"], "values": [{"value": 5.0, "step": null, "ts": 1674145705.206379}]}, "version": 126}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145705.2097766}]}, "version": 127}
+{"obj": {"type": "LogFloats", "path": ["monitoring", "gpu_memory"], "values": [{"value": 1.8175048828125, "step": null, "ts": 1674145705.206379}]}, "version": 128}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     3 / 5 ] --> Loss = 0.7093 - iteration time:0.0589 ", "step": null, "ts": 1674145705.2677367}]}, "version": 129}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145705.2682433}]}, "version": 130}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     4 / 5 ] --> Loss = 0.6969 - iteration time:0.0516 ", "step": null, "ts": 1674145705.3189983}]}, "version": 131}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145705.3197412}]}, "version": 132}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     5 / 5 ] --> Loss = 0.6960 - iteration time:0.0329 ", "step": null, "ts": 1674145705.3519375}]}, "version": 133}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145705.352794}]}, "version": 134}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - mean"], "values": [{"value": 0.5447182371723712, "step": null, "ts": 1674145706.1334238}]}, "version": 135}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Consolidation"], "values": [{"value": 0.6590909090909091, "step": null, "ts": 1674145706.133885}]}, "version": 136}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Hernia"], "values": [{"value": 0.6666666666666667, "step": null, "ts": 1674145706.134201}]}, "version": 137}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Atelectasis"], "values": [{"value": 0.7803030303030303, "step": null, "ts": 1674145706.1344597}]}, "version": 138}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Cardiomegaly"], "values": [{"value": 0.522248243559719, "step": null, "ts": 1674145706.134738}]}, "version": 139}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Edema"], "values": [{"value": 0.4925373134328358, "step": null, "ts": 1674145706.134987}]}, "version": 140}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Emphysema"], "values": [{"value": 0.48484848484848486, "step": null, "ts": 1674145706.1353443}]}, "version": 141}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Fibrosis"], "values": [{"value": 0.5227272727272727, "step": null, "ts": 1674145706.1357126}]}, "version": 142}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Fracture"], "values": [{"value": 0.49743589743589745, "step": null, "ts": 1674145706.1360478}]}, "version": 143}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Infiltration"], "values": [{"value": 0.44921875, "step": null, "ts": 1674145706.1363807}]}, "version": 144}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Mass"], "values": [{"value": 0.7803030303030303, "step": null, "ts": 1674145706.136726}]}, "version": 145}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Nodule"], "values": [{"value": 0.63671875, "step": null, "ts": 1674145706.1370604}]}, "version": 146}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - No Finding"], "values": [{"value": 0.44347826086956516, "step": null, "ts": 1674145706.13739}]}, "version": 147}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Effusion"], "values": [{"value": 0.49609375, "step": null, "ts": 1674145706.137718}]}, "version": 148}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Pleural_Thickening"], "values": [{"value": 0.46666666666666673, "step": null, "ts": 1674145706.138046}]}, "version": 149}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Pneumonia"], "values": [{"value": 0.3629032258064516, "step": null, "ts": 1674145706.1385276}]}, "version": 150}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - Pneumothorax"], "values": [{"value": 0.46875, "step": null, "ts": 1674145706.1389296}]}, "version": 151}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "AUROC - other"], "values": [{"value": 0.5302197802197802, "step": null, "ts": 1674145706.1395478}]}, "version": 152}
+{"obj": {"type": "LogFloats", "path": ["train", "epoch", "loss"], "values": [{"value": 0.7023586385390338, "step": null, "ts": 1674145706.140135}]}, "version": 153}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Validation", "step": null, "ts": 1674145706.1450202}]}, "version": 154}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145706.2131793}]}, "version": 155}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     1/4 ] --> Validation loss = 0.6903", "step": null, "ts": 1674145706.782315}]}, "version": 156}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145706.7830577}]}, "version": 157}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     2/4 ] --> Validation loss = 0.6913", "step": null, "ts": 1674145706.875474}]}, "version": 158}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145706.8762705}]}, "version": 159}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     3/4 ] --> Validation loss = 0.6896", "step": null, "ts": 1674145706.9162583}]}, "version": 160}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145706.9167366}]}, "version": 161}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch [    2/2 ] - Iteration [     4/4 ] --> Validation loss = 0.6890", "step": null, "ts": 1674145706.9401243}]}, "version": 162}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145706.9412296}]}, "version": 163}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - mean"], "values": [{"value": 0.4335587016823085, "step": null, "ts": 1674145707.7994916}]}, "version": 164}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Consolidation"], "values": [{"value": 0.5283018867924528, "step": null, "ts": 1674145707.8002968}]}, "version": 165}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Hernia"], "values": [{"value": 0.39622641509433965, "step": null, "ts": 1674145707.8007782}]}, "version": 166}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Atelectasis"], "values": [{"value": 0.0, "step": null, "ts": 1674145707.8011112}]}, "version": 167}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Cardiomegaly"], "values": [{"value": 0.4525, "step": null, "ts": 1674145707.8013952}]}, "version": 168}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Edema"], "values": [{"value": 0.4716981132075472, "step": null, "ts": 1674145707.8016782}]}, "version": 169}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Emphysema"], "values": [{"value": 0.4313725490196078, "step": null, "ts": 1674145707.8019457}]}, "version": 170}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Fibrosis"], "values": [{"value": 0.6346153846153846, "step": null, "ts": 1674145707.8022156}]}, "version": 171}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Fracture"], "values": [{"value": 0.261437908496732, "step": null, "ts": 1674145707.8025}]}, "version": 172}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Infiltration"], "values": [{"value": 0.4340277777777778, "step": null, "ts": 1674145707.8027797}]}, "version": 173}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Mass"], "values": [{"value": 0.49019607843137253, "step": null, "ts": 1674145707.803082}]}, "version": 174}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Nodule"], "values": [{"value": 0.8823529411764706, "step": null, "ts": 1674145707.8033705}]}, "version": 175}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - No Finding"], "values": [{"value": 0.37518037518037517, "step": null, "ts": 1674145707.8036544}]}, "version": 176}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Effusion"], "values": [{"value": 0.29411764705882354, "step": null, "ts": 1674145707.8039258}]}, "version": 177}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Pleural_Thickening"], "values": [{"value": 0.28301886792452835, "step": null, "ts": 1674145707.8041928}]}, "version": 178}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Pneumonia"], "values": [{"value": 0.4542483660130719, "step": null, "ts": 1674145707.8044593}]}, "version": 179}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - Pneumothorax"], "values": [{"value": 0.6204081632653061, "step": null, "ts": 1674145707.8047214}]}, "version": 180}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "AUROC - other"], "values": [{"value": 0.3607954545454546, "step": null, "ts": 1674145707.8049843}]}, "version": 181}
+{"obj": {"type": "LogFloats", "path": ["valid", "epoch", "loss"], "values": [{"value": 0.6902508492823001, "step": null, "ts": 1674145707.8052528}]}, "version": 182}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Epoch:    2/2 --> Train Loss: 0.6960  Validation Loss: 0.6890", "step": null, "ts": 1674145707.8108294}]}, "version": 183}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145707.8216412}]}, "version": 184}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Best densenet121 model score is reached now: 0.6903", "step": null, "ts": 1674145707.8324764}]}, "version": 185}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "\n", "step": null, "ts": 1674145707.8441613}]}, "version": 186}
+{"obj": {"type": "UploadFile", "path": ["model", "mdl=densenet121-dataset=(pc-pc)-imsize=224-wt=normal-lfn=bce-gn=base-lr=(5e-06,1e-07)-ep=2-bs=16-aug=1.0-id=230119-841831.pt"], "ext": "pt", "file_path": "/media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/2023/Generalization/cadxray/models/mdl=densenet121-dataset=(pc-pc)-imsize=224-wt=normal-lfn=bce-gn=base-lr=(5e-06,1e-07)-ep=2-bs=16-aug=1.0-id=230119-841831.pt", "clean_after_upload": false}, "version": 187}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Validation Loss"], "value": 0.6902508492823001}, "version": 188}
+{"obj": {"type": "AssignInt", "path": ["validation results", "Stopping Epoch"], "value": 1}, "version": 189}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Consolidation"], "value": 0.5283018867924528}, "version": 190}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Hernia"], "value": 0.39622641509433965}, "version": 191}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Atelectasis"], "value": 0.0}, "version": 192}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Cardiomegaly"], "value": 0.4525}, "version": 193}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Edema"], "value": 0.4716981132075472}, "version": 194}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Emphysema"], "value": 0.4313725490196078}, "version": 195}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Fibrosis"], "value": 0.6346153846153846}, "version": 196}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Fracture"], "value": 0.261437908496732}, "version": 197}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Infiltration"], "value": 0.4340277777777778}, "version": 198}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Mass"], "value": 0.49019607843137253}, "version": 199}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Nodule"], "value": 0.8823529411764706}, "version": 200}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "No Finding"], "value": 0.37518037518037517}, "version": 201}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Effusion"], "value": 0.29411764705882354}, "version": 202}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Pleural_Thickening"], "value": 0.28301886792452835}, "version": 203}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Pneumonia"], "value": 0.4542483660130719}, "version": 204}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "Pneumothorax"], "value": 0.6204081632653061}, "version": 205}
+{"obj": {"type": "AssignFloat", "path": ["validation results", "other"], "value": 0.3607954545454546}, "version": 206}
+{"obj": {"type": "LogStrings", "path": ["monitoring", "stdout"], "values": [{"value": "Shutting down background jobs, please wait a moment...\n", "step": null, "ts": 1674145714.4308577}]}, "version": 207}

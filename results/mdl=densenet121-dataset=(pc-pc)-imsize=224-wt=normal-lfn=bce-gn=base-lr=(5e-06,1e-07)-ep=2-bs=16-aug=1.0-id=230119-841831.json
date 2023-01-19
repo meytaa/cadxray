@@ -1,0 +1,21 @@
+{
+    "Validation Loss": 0.6902508492823001,
+    "Stopping Epoch": 1,
+    "Consolidation": 0.5283018867924528,
+    "Hernia": 0.39622641509433965,
+    "Atelectasis": 0.0,
+    "Cardiomegaly": 0.4525,
+    "Edema": 0.4716981132075472,
+    "Emphysema": 0.4313725490196078,
+    "Fibrosis": 0.6346153846153846,
+    "Fracture": 0.261437908496732,
+    "Infiltration": 0.4340277777777778,
+    "Mass": 0.49019607843137253,
+    "Nodule": 0.8823529411764706,
+    "No Finding": 0.37518037518037517,
+    "Effusion": 0.29411764705882354,
+    "Pleural_Thickening": 0.28301886792452835,
+    "Pneumonia": 0.4542483660130719,
+    "Pneumothorax": 0.6204081632653061,
+    "other": 0.3607954545454546
+}

@@ -1,0 +1,46 @@
+data:
+  aug_prob: 1.0
+  cc:
+    cxr14:
+      csv_path: /home/meyta/scratch/Datasets/ChestXray14/new_split_xray14
+      data_path: /home/meyta/scratch/Datasets/ChestXray14/images
+    pc:
+      csv_path: /home/meyta/scratch/Datasets/PC/split_PC
+      data_path: /home/meyta/scratch/Datasets/PC/images-224
+    tb:
+      data_path: /home/meyta/scratch/Datasets/TB_Chest_Radiography_Database
+  image_size: 92
+  local:
+    cxr14:
+      csv_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/ChestXray14/new_split_xray14
+      data_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/ChestXray14/images
+    pc:
+      csv_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/Padchest/PC/split_PC_
+      data_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/Padchest/PC/images-224
+    tb:
+      data_path: /media/mohammad/Windows/Users/Mohammad/Desktop/Files/Thesis/Pytorch/data/TB_Chest_Radiography_Database
+  machine: local
+  test_dataset: pc
+  train_dataset: pc
+log:
+  layer_path: layers
+  model_path: models
+  result_path: results
+model:
+  init_weights: scratch
+  model_name: densenet121
+  output_ch: 2
+neptune:
+  API-KEY: eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJmNGRmYzUzNS0yZGY3LTRmNWEtYWYwNi03YzM2MWU0MmM5YzMifQ==
+training:
+  batch_size: 32
+  generalization: base
+  load_model_id: 230116-289957
+  loss_fcn: bce
+  lr: 5.0e-06
+  lr_decay: 5.0e-07
+  mode: train
+  num_epochs: 160
+  num_workers: 4
+  tr_strategy: 'off'
+  validation_flag: true

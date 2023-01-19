@@ -68,6 +68,7 @@ def get_transforms(im_size):
                 T.RandomAffine(degrees=(-10, 10), translate=(0., 0.1), scale=(0.9, 1.1)),
                 T.ToTensor(),
                 T.Normalize((0.5), (0.5)),
+                T.Lambda(lambda x: x.repeat(3, 1, 1) )
                 ])
     return transforms
 
@@ -106,43 +107,62 @@ def read_data(config, verbose=False):
     '''
     print(100 * '_')
     print('Reading data!')
-    transforms = get_transforms(config['image_size'])
+    transforms = T.Compose([
+            T.Resize((config['image_size'], config['image_size'])),
+            T.RandomRotation(10),
+            T.RandomHorizontalFlip(p=0.5),
+            T.RandomAffine(degrees=(-10, 10), translate=(0., 0.1), scale=(0.9, 1.1)),
+            T.ToTensor(),
+            T.Normalize((0.5), (0.5)),
+            T.Lambda(lambda x: x.repeat(3, 1, 1) )
+            ])
     # Getting addresses from the config parameters
-    data_path = config[config['machine']][config['dataset']]['data_path']
-    if not config['dataset']=='tb':
-        csv_path = config[config['machine']][config['dataset']]['csv_path']
+    train_data_path = config[config['machine']][config['train_dataset']]['data_path']
+    test_data_path = config[config['machine']][config['test_dataset']]['data_path']
+    if not config['train_dataset']=='tb':
+        train_csv_path = config[config['machine']][config['train_dataset']]['csv_path']
+    else:
+        csv_path = ''
+    if not config['test_dataset']=='tb':
+        test_csv_path = config[config['machine']][config['test_dataset']]['csv_path']
     else:
         csv_path = ''
     
     # tb dataset is accessible via ImageFolder. O.W we use a same functions for datasets.
-    if config['dataset'] == 'tb':
-        all_dataset = datasets.ImageFolder(data_path, transform=transforms)#, target_transform=target_to_oh
-        train_dataset, val_dataset, test_dataset = split_dataset(all_dataset, train_percent=0.65, test_percent=0.25)
-        print('dataset created')
-    else: # Tested on CXR14 and PC
-        train_dataset = CXR_dataset(config['dataset'],
-                                datapath=data_path,
-                                csvpath= os.path.join(csv_path,'train.csv'),
+    if config['train_dataset'] == 'tb':
+        all_dataset = datasets.ImageFolder(train_data_path, transform=transforms)#, target_transform=target_to_oh
+        train_dataset, val_dataset, _ = split_dataset(all_dataset, train_percent=0.65, test_percent=0.25)
+    else:
+        train_dataset = CXR_dataset(config['train_dataset'],
+                                datapath=train_data_path,
+                                csvpath= os.path.join(train_csv_path,'train.csv'),
                                 transforms=transforms,
                                 mode='train',
-                                augmentation_prob= config['aug_prob'])
-        test_dataset = CXR_dataset(config['dataset'],
-                                datapath=data_path,
-                                csvpath= os.path.join(csv_path, 'test.csv'),
-                                transforms=transforms,
-                                mode='test',
-                                augmentation_prob= config['aug_prob'])
-        val_dataset = CXR_dataset(config['dataset'],
-                                datapath=data_path,
-                                csvpath= os.path.join(csv_path, 'dev.csv'),
+                                augmentation_prob= config['aug_prob'])                            
+        val_dataset = CXR_dataset(config['train_dataset'],
+                                datapath=train_data_path,
+                                csvpath= os.path.join(train_csv_path, 'dev.csv'),
                                 transforms=transforms,
                                 mode='dev',
                                 augmentation_prob= config['aug_prob'])
+    if config['test_dataset'] == 'tb':
+        all_dataset = datasets.ImageFolder(test_data_path, transform=transforms)#, target_transform=target_to_oh
+        _, _, test_dataset = split_dataset(all_dataset, train_percent=0.65, test_percent=0.25)
+        print('dataset created')
+    else: # Tested on CXR14 and PC
+        test_dataset = CXR_dataset(config['test_dataset'],
+                                datapath=test_data_path,
+                                csvpath= os.path.join(test_csv_path, 'test.csv'),
+                                transforms=transforms,
+                                mode='test',
+                                augmentation_prob= config['aug_prob'])
+
     
-    print('Dataset name: {} \nDataset size: {}'.format(config['dataset'], len(train_dataset)+len(val_dataset)+len(test_dataset)))
+    print('Train dataset name: {} \nDataset size: {}'.format(config['train_dataset'], len(train_dataset)+len(val_dataset)))
+    print('Test dataset name: {} \nDataset size: {}'.format(config['test_dataset'], len(test_dataset)))
     print()
     if verbose:
-        print('Addresses introduced for "{}" running on {} machine. \nImage data path: {} \nCSV file path: {}'.format(config['dataset'], config['machine'], data_path, csv_path))
+        print('Addresses introduced for "{}" and "{}" running on {} machine. \n Training set:\nImages data path: {} \nCSV file path: {}\n\nTestings set:\nImages data path: {} \nCSV file path: {}'.format(config['train_dataset'],config['test_dataset'], config['machine'], train_data_path, train_csv_path, test_data_path, test_csv_path))
         print('\n# Train set samples:      ', len(train_dataset), '\n# Test set samples:       ',\
         len(test_dataset), '\n# Validation set samples: ', len(val_dataset) , '\nLoading Completed' +'\n')
     print('Reading Data Completed.')
